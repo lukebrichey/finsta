@@ -24,6 +24,7 @@ const Label = React.forwardRef<
 ))
 Label.displayName = LabelPrimitive.Root.displayName
 
+// Example usage of Label for section heading
 const SectionHeading = ({ children }: { children: React.ReactNode }) => (
   <Label className="text-lg font-semibold">{children}</Label>
 )
