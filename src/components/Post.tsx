@@ -8,7 +8,7 @@ export default function Post({ user, image, comments }: PostProps) {
         <div className="rounded-lg mx-auto my-4 max-w-xl w-1/3">
             <div className="flex items-center p-4">
                 <Avatar className="h-6 w-6 mr-2">
-                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarImage src={`${user.avatarUrl}`} />
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
                 <strong className="font-bold">{user.username}</strong>

@@ -16,55 +16,54 @@ import manu from '../../../images/manu.png';
 import everton from '../../../images/everton.png'; 
 import arsenal from '../../../images/arsenal.png';
 
-import { SectionHeading } from '../../components/feedcardheading'; // Import the SectionHeading component
+import { SectionHeading } from '../../components/feedcardheading';
 
 const Page = () => {
-  // Sample data for playlists
+  // Sample data for feeds
   const playlists1 = [
-    { id: 1, imageUrl: nflImage, label: 'NFL Highlights' }, // Provide string URL
-    { id: 2, imageUrl: rugbyImage, label: 'England Rugby' }, // Provide string URL
-    { id: 3, imageUrl: studyImage, label: 'Study Motivation' }, // Provide string URL
-    { id: 4, imageUrl: christmas, label: 'Christmas Inspiration' }, // Provide string URL
+    { id: 1, imageUrl: nflImage, label: 'NFL Highlights' },
+    { id: 2, imageUrl: rugbyImage, label: 'England Rugby' },
+    { id: 3, imageUrl: studyImage, label: 'Study Motivation' },
+    { id: 4, imageUrl: christmas, label: 'Christmas Inspiration' },
     { id: 5, imageUrl: roadtrip, label: 'Roadtrip Ideas' }
-    // Add more playlists as needed
   ];
 
   const playlists2 = [
-    { id: 5, imageUrl: cardio, label: 'Cardio Routine' }, // Provide string URL
+    { id: 5, imageUrl: cardio, label: 'Cardio Routine' },
     { id: 6, imageUrl: outfit, label: 'Gym Outfits' },
-    { id: 7, imageUrl: protein, label: 'Protein Intake' }, // Provide string URL
+    { id: 7, imageUrl: protein, label: 'Protein Intake' },
     { id: 8, imageUrl: pullup, label: 'Pullup Form' },
-    { id: 9, imageUrl: bicep, label: 'Bicep Exercises' } // Provide string URL
+    { id: 9, imageUrl: bicep, label: 'Bicep Exercises' }
   ];
 
   const playlists3 = [
-    { id: 10, imageUrl: chelsea, label: 'Chelsea' }, // Provide string URL
+    { id: 10, imageUrl: chelsea, label: 'Chelsea' },
     { id: 11, imageUrl: arsenal, label: 'Arsenal vs Wolves' },
-    { id: 12, imageUrl: everton, label: 'The Mighty Blues' }, // Provide string URL
+    { id: 12, imageUrl: everton, label: 'The Mighty Blues' },
     { id: 13, imageUrl: manu, label: 'Man U vs Man City' },
-    { id: 14, imageUrl: liverpool, label: 'Liverpool' } // Provide string URL
+    { id: 14, imageUrl: liverpool, label: 'Liverpool' }
   ];
 
   return (
-    <div className="flex flex-col items-start p-8"> {/* Align content to the left */}
-      <SectionHeading>Your Saved Feeds</SectionHeading> {/* Display the section heading */}
+    <div className="flex flex-col items-start p-8">
+      <SectionHeading>Your Saved Feeds</SectionHeading>
       <div className="flex flex-wrap justify-start items-start">
         {playlists1.map(playlist => (
-          <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} /> // Pass string URL
+          <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
         ))}
       </div>
 
-      <SectionHeading>Gym Inspiration</SectionHeading> {/* Display the section heading */}
+      <SectionHeading>Gym Inspiration</SectionHeading>
       <div className="flex flex-wrap justify-start items-start">
         {playlists2.map(playlist => (
-          <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} /> // Pass string URL
+          <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
         ))}
       </div>
 
-      <SectionHeading>Premier League</SectionHeading> {/* Display the section heading */}
+      <SectionHeading>Premier League</SectionHeading>
       <div className="flex flex-wrap justify-start items-start">
         {playlists3.map(playlist => (
-          <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} /> // Pass string URL
+          <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
         ))}
       </div>
     </div>
