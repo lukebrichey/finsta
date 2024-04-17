@@ -1,10 +1,12 @@
 import React from 'react';
+import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
 import { HeartIcon, HomeIcon, CameraIcon, RectangleStackIcon } from '@heroicons/react/24/outline';
 
 type MenuItemProps = {
     icon: React.ReactElement;
     label: string;
+    route?: string
 };
 
 const FinstaLogo = () => {
@@ -25,9 +27,9 @@ const SidePanel = () => {
         <div className="w-64 h-full shadow-lg px-4 py-8 border-r border-gray-800">
             <div className="mt-8 space-y-8">
                 <FinstaLogo />
-                <MenuItem icon={<HomeIcon className="h-6 w-6" />} label="Home" />
-                <MenuItem icon={<HeartIcon className="h-6 w-6" />} label="Activity" />
-                <MenuItem icon={<RectangleStackIcon className="h-6 w-6" />} label="Feeds" />
+                <MenuItem icon={<HomeIcon className="h-6 w-6" />} label="Home" route="/" />
+                <MenuItem icon={<HeartIcon className="h-6 w-6" />} label="Activity" route="/activity" />
+                <MenuItem icon={<RectangleStackIcon className="h-6 w-6" />} label="Feeds" route="/feeds"/>
                 <MenuItem icon={<CameraIcon className="h-6 w-6" />} label="New Post" />
                 <MenuItem 
                     icon={
@@ -43,11 +45,14 @@ const SidePanel = () => {
     );
 };
 
-const MenuItem = ({ icon, label }: MenuItemProps) => (
-    <div className="flex items-center space-x-3">
+const MenuItem = ({ icon, label, route }: MenuItemProps) => (
+    <Link 
+        href={route ? `${route}` : `/${label}`}
+        className="flex items-center space-x-3"
+    >
         {icon}
         <p className="text-md">{label}</p>
-    </div>
+    </Link>
 );
 
 export default SidePanel;

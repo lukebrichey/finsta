@@ -1,5 +1,4 @@
 import React from 'react';
-import SidePanel from '../../components/SidePanel'; // Assuming the SidePanel component is in the same directory
 import { PlaylistCard } from '../../components/feedcard'; // Assuming the PlaylistCard component is in the same directory
 import image1 from './snow.png'; 
 
@@ -15,10 +14,6 @@ const Page = () => {
 
   return (
     <div className="flex">
-      {/* SidePanel Component */}
-      <SidePanel />
-
-      {/* Row of Playlist Cards */}
       <div className="flex flex-wrap justify-center items-start p-8">
         {playlists.map(playlist => (
           <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} />
