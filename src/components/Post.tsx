@@ -1,23 +1,7 @@
 import Image from 'next/image';
-import type { StaticImageData } from 'next/image';
+import type { PostProps } from '../types/post-types';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { SparklesIcon, ChatBubbleOvalLeftIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
-
-type User = {
-    username: string,
-    avatarUrl: string
-};
-
-type Comment = {
-    username: string,
-    text: string
-};
-
-type PostProps = {
-    user: User,
-    image: StaticImageData,
-    comments: Comment[]
-};
 
 export default function Post({ user, image, comments }: PostProps) {
     return (
@@ -33,9 +17,9 @@ export default function Post({ user, image, comments }: PostProps) {
                 <Image src={image} alt="Post image" className="object-contain border-none rounded-lg" />
             </div>
             <div className="flex flex-row items-center w-full pt-4 ml-2 space-x-3">
-                <SparklesIcon className="h-6 w-6" />
-                <ChatBubbleOvalLeftIcon className="h-6 w-6" />
-                <PaperAirplaneIcon className="h-6 w-6" />
+                <SparklesIcon className="h-6 w-6 hover:cursor-pointer" />
+                <ChatBubbleOvalLeftIcon className="h-6 w-6 hover:cursor-pointer" />
+                <PaperAirplaneIcon className="h-6 w-6 hover:cursor-pointer" />
             </div>
             <div className="p-4">
                 {comments.map((comment, index) => (
