@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from 'next/image'; // Import Image from next/image
-import type { StaticImageData } from 'next/image'; // Import StaticImageData type from next/image
+import Image from 'next/image'; 
+import type { StaticImageData } from 'next/image'; 
 
 interface PlaylistCardProps {
   imageSrc: StaticImageData; // Change type to StaticImageData
