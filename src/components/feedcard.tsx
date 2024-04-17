@@ -1,16 +1,24 @@
-import * as React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { Label } from "../components/ui/label";
+import React from 'react';
+import Image from 'next/image'; // Import Image from next/image
+import type { StaticImageData } from 'next/image'; // Import StaticImageData type from next/image
 
-export function PlaylistCard({ imageSrc, label }) {
+interface PlaylistCardProps {
+  imageSrc: StaticImageData; // Change type to StaticImageData
+  label: string;
+}
+
+export function PlaylistCard({ imageSrc, label }: PlaylistCardProps) {
   return (
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>{label}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <img src={imageSrc} alt={label} className="w-full h-auto" />
-      </CardContent>
-    </Card>
+    <div className="border border-gray-500 rounded-lg mx-2 my-4"> {/* Add margin to the sides */}
+      <div style={{ width: '200px', height: '200px', position: 'relative', overflow: 'hidden' }}> {/* Set half width and height */}
+        <div style={{ position: 'absolute', width: '100%', height: '100%' }}> {/* Maintain aspect ratio */}
+          <Image src={imageSrc} alt={label} layout="fill" objectFit="cover" /> {/* Fill container while maintaining aspect ratio */}
+        </div>
+      </div>
+      <div className="p-4">
+        <strong className="font-bold">{label}</strong>
+      </div>
+    </div>
   );
 }
+
