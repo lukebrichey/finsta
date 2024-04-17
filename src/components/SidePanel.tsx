@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
 import { HeartIcon, HomeIcon, CameraIcon, RectangleStackIcon } from '@heroicons/react/24/outline';
 
 type MenuItemProps = {

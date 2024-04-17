@@ -2,8 +2,8 @@ import "~/styles/globals.css";
 
 import { Inter } from "next/font/google";
 
-import { TRPCReactProvider } from "~/trpc/react";
-import SidePanel from "~/components/SidePanel";
+import { TRPCReactProvider } from "../trpc/react";
+import SidePanel from "../components/SidePanel";
 
 const inter = Inter({
   subsets: ["latin"],
