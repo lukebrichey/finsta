@@ -1,7 +1,7 @@
 import React from 'react';
 import SidePanel from '../../components/SidePanel'; // Assuming the SidePanel component is in the same directory
 import { PlaylistCard } from '../../components/feedcard'; // Assuming the PlaylistCard component is in the same directory
-import image1 from './snow.png'; // Import the image files
+import image1 from './snow.png'; 
 
 
 const Page = () => {
