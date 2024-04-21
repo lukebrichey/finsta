@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { HeartIcon, HomeIcon, CameraIcon, RectangleStackIcon } from '@heroicons/react/24/outline';
 
 type MenuItemProps = {
@@ -30,7 +30,7 @@ const SidePanel = () => {
                 <MenuItem icon={<HomeIcon className="h-6 w-6" />} label="Home" route="/" />
                 <MenuItem icon={<HeartIcon className="h-6 w-6" />} label="Activity" route="/activity" />
                 <MenuItem icon={<RectangleStackIcon className="h-6 w-6" />} label="Feeds" route="/feeds"/>
-                <MenuItem icon={<CameraIcon className="h-6 w-6" />} label="New Post" />
+                <MenuItem icon={<CameraIcon className="h-6 w-6" />} label="New Post" route="/post" />
                 <MenuItem 
                     icon={
                             <Avatar className="h-6 w-6">
@@ -38,7 +38,8 @@ const SidePanel = () => {
                                 <AvatarFallback>CN</AvatarFallback>
                             </Avatar>
                     } 
-                    label="Profile" 
+                    label="Profile"
+                    route="/profile"
                 />
             </div>
         </div>

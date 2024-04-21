@@ -1,11 +1,13 @@
 import "~/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
+
+import { cn } from "@/lib/utils";
 
 import { TRPCReactProvider } from "../trpc/react";
 import SidePanel from "../components/SidePanel";
 
-const inter = Inter({
+const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -23,7 +25,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
         <div className="min-h-screen flex bg-black text-white">
           <div className="w-64">
             <SidePanel />

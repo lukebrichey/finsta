@@ -23,6 +23,8 @@ model Post {
     createdBy   User   @relation(fields: [createdById], references: [id])
     createdById String
 
+    interestedUsers User[] @relation("InterestedPosts")
+
     @@index([name])
 }
 
@@ -53,15 +55,33 @@ model Session {
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model FollowRequest {
+    id          String   @id @default(cuid())
+    fromUser    User     @relation("FollowRequestsSent", fields: [fromUserId], references: [id])
+    fromUserId  String
+    toUser      User     @relation("FollowRequestsReceived", fields: [toUserId], references: [id])
+    toUserId    String
+    status      String   // Could be 'pending', 'accepted', 'rejected'
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
 model User {
     id            String    @id @default(cuid())
     name          String?
     email         String?   @unique
     emailVerified DateTime?
-    image         String?
+    avatarUrl     String
+    username      String   @unique
+    bio           String?
+    mutuals       User[]    @relation("UserMutuals")
+    mutualsOf     User[]    @relation("UserMutuals")
+    followRequests FollowRequest[] @relation("FollowRequestsReceived")
+    sentFollowRequests FollowRequest[] @relation("FollowRequestsSent")
     accounts      Account[]
     sessions      Session[]
     posts         Post[]
+    interestedPosts Post[] @relation("InterestedPosts")
 }
 
 model VerificationToken {
