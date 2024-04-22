@@ -5,6 +5,9 @@ import arsenal from '../../images/arsenal.png';
 import liverpool from '../../images/liverpool.png';
 import rugby from '../../images/rugby.png';
 
+import Link from 'next/link';
+import { getServerAuthSession } from '~/server/auth';
+
 // Mock data to simulate a list of posts. Replace with your actual data fetching logic.
 const postsData = [
   {
@@ -40,14 +43,23 @@ const postsData = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+
+  const session = await getServerAuthSession();
+
   return (
     <div>
       <Head>
         <title>Instagram Clone</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-    <Feed posts={postsData} />
+      <Feed posts={postsData} />
+      <Link
+        href={session ? "/api/auth/signout" : "/api/auth/signin"}
+        className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
+      >
+          {session ? "Sign out" : "Sign in"}
+      </Link>
     </div>
   );
 }
