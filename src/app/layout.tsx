@@ -27,8 +27,6 @@ export default async function RootLayout({
 
   const session = await getServerAuthSession();
 
-  console.log(session?.user.image);
-
   return (
     <html lang="en">
       <body

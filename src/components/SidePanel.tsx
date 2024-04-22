@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { HeartIcon, HomeIcon, CameraIcon, RectangleStackIcon } from '@heroicons/react/24/outline';
+import { getServerAuthSession } from '~/server/auth';
 
 type MenuItemProps = {
     icon: React.ReactElement;
@@ -22,7 +23,9 @@ const FinstaLogo = () => {
   );
 };
 
-const SidePanel = ({ avatarUrl }: { avatarUrl: string }) => {
+const SidePanel = async ({ avatarUrl }: { avatarUrl: string }) => {
+    const session = await getServerAuthSession();
+
     return (
         <div className="w-64 h-full shadow-lg px-4 py-8 border-r border-gray-800">
             <div className="mt-8 space-y-8">
@@ -38,9 +41,27 @@ const SidePanel = ({ avatarUrl }: { avatarUrl: string }) => {
                                 <AvatarFallback>CN</AvatarFallback>
                             </Avatar>
                     } 
-                    label="Profile"
-                    route="/profile"
+                    label={session ? "Profile" : "Sign in"}
+                    route={session ? "/profile" : "/api/auth/signin"}
                 />
+            </div>
+            <div className="absolute bottom-0">
+                {
+                    session ? (
+                        <Link
+                            href="/api/auth/signout"
+                            className="rounded-sm bg-white/10 px-3 py-2 font-semibold no-underline transition hover:bg-white/20"
+                        >
+                            Sign out
+                        </Link>
+                    ) : (
+                        <>
+                        </>
+                    )
+                }
+                <p className="text-center text-gray-500 text-sm mt-5 mb-2">
+                    &copy; 2024 Finsta. All rights reserved.
+                </p>
             </div>
         </div>
     );
