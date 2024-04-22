@@ -22,7 +22,7 @@ const FinstaLogo = () => {
   );
 };
 
-const SidePanel = () => {
+const SidePanel = ({ avatarUrl }: { avatarUrl: string }) => {
     return (
         <div className="w-64 h-full shadow-lg px-4 py-8 border-r border-gray-800">
             <div className="mt-8 space-y-8">
@@ -34,7 +34,7 @@ const SidePanel = () => {
                 <MenuItem 
                     icon={
                             <Avatar className="h-6 w-6">
-                                <AvatarImage src="https://github.com/shadcn.png" />
+                                <AvatarImage src={`${avatarUrl}`} />
                                 <AvatarFallback>CN</AvatarFallback>
                             </Avatar>
                     } 

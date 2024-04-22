@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 import { TRPCReactProvider } from "../trpc/react";
 import SidePanel from "../components/SidePanel";
+import { getServerAuthSession } from '~/server/auth';
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -18,11 +19,16 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  const session = await getServerAuthSession();
+
+  console.log(session?.user.image);
+
   return (
     <html lang="en">
       <body
@@ -33,7 +39,7 @@ export default function RootLayout({
       >
         <div className="min-h-screen flex bg-black text-white">
           <div className="w-64">
-            <SidePanel />
+            <SidePanel avatarUrl={session ? session.user.image : 'https://github.com/shadcn.png'} />
           </div>
           <div className="flex-1">
             <TRPCReactProvider>
