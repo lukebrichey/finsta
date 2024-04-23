@@ -1,7 +1,6 @@
 import React from 'react';
 import { PlaylistCard } from '../../components/feedcard'; // Assuming the PlaylistCard component is in the same directory
-
-
+import { InputDemo } from '../../components/search';
 import { SectionHeading } from '../../components/feedcardheading';
 
 const Page = () => {
@@ -32,6 +31,10 @@ const Page = () => {
 
   return (
     <div className="flex flex-col items-start p-8">
+      <div className="flex justify-end">
+        <InputDemo />
+      </div>
+      
       <SectionHeading>Your Saved Feeds</SectionHeading>
       <div className="flex flex-wrap justify-start items-start">
         {playlists1.map(playlist => (
@@ -56,5 +59,5 @@ const Page = () => {
   );
 };
 
-export default Page;
 
+export default Page;
