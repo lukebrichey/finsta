@@ -1,7 +1,7 @@
 import Feed from '../../../components/Feed';
-import brown from '../../../../images/brown.jpg';
-import polumalu from '../../../../images/polumalu.jpeg';
-import bryant from '../../../../images/bryant.jpg';
+import arsenal from '../../../../images/arsenal.png';
+import liverpool from '../../../../images/liverpool.png';
+import rugby from '../../../../images/rugby.png';
 
 
 export default function FeedPage() {
@@ -12,7 +12,7 @@ export default function FeedPage() {
             username: "steelers",
             avatarUrl: 'https://seeklogo.com/images/P/Pittsburgh_Steelers-logo-EAE5BCABDE-seeklogo.com.png'
         },
-        image: brown,
+        image: arsenal,
         comments: [
             { username: "bob", text: "This is amazing!" },
             { username: "charlie", text: "Wow, great post!" }
@@ -23,7 +23,7 @@ export default function FeedPage() {
             username: "steelers",
             avatarUrl: 'https://seeklogo.com/images/P/Pittsburgh_Steelers-logo-EAE5BCABDE-seeklogo.com.png'
         },
-        image: bryant,
+        image: liverpool,
         comments: [
             { username: "alice", text: "Loved this!" }
         ]
@@ -33,7 +33,7 @@ export default function FeedPage() {
             username: "steelers",
             avatarUrl: 'https://seeklogo.com/images/P/Pittsburgh_Steelers-logo-EAE5BCABDE-seeklogo.com.png'
         },
-        image: polumalu,
+        image: rugby,
         comments: [
             { username: "alice", text: "nice" }
         ]
