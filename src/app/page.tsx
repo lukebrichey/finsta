@@ -9,13 +9,14 @@ import rugby from '../../images/rugby.png';
 const postsData = [
   {
     user: {
-      username: "alice",
+      username: "Michaela",
       avatarUrl: 'https://github.com/shadcn.png'
     },
     image: rugby,
     comments: [
-      { username: "bob", text: "This is amazing!" },
-      { username: "charlie", text: "Wow, great post!" }
+      { username: "Michaela", text: "I love rugby!" },
+      { username: "Luke", text: "I prefer the NFL!" },
+      { username: "Michaela", text: "Freak" }
     ]
   },
   {
