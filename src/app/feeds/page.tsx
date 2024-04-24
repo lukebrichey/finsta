@@ -1,7 +1,8 @@
 import React from 'react';
-import { PlaylistCard } from '../../components/feedcard'; // Assuming the PlaylistCard component is in the same directory
+import { PlaylistCard } from '../../components/feedcard'; 
 import { InputDemo } from '../../components/search';
 import { SectionHeading } from '../../components/feedcardheading';
+import { SearchButton } from '../../components/searchbutton';
 
 const Page = () => {
   // Sample data for feeds
@@ -30,30 +31,37 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col items-start h-screen p-8 overflow-y-auto">
-      <div className="flex justify-end">
-        <InputDemo />
-      </div>
-      
-      <SectionHeading>Your Saved Feeds</SectionHeading>
-      <div className="flex flex-wrap justify-start items-start">
-        {playlists1.map(playlist => (
-          <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
-        ))}
+    <div className="flex flex-col items-center h-screen p-8 overflow-y-auto">
+      {/* Container for centered search bar and button */}
+      <div className="w-full flex justify-center my-4">
+        <div className="flex justify-center items-center gap-2">  
+          <InputDemo />
+          <SearchButton /> 
+        </div>
       </div>
 
-      <SectionHeading>Gym Inspiration</SectionHeading>
-      <div className="flex flex-wrap justify-start items-start">
-        {playlists2.map(playlist => (
-          <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
-        ))}
-      </div>
+      {/* Content sections with left-aligned headings */}
+      <div className="w-full">
+        <SectionHeading>Your Saved Feeds</SectionHeading>
+        <div className="flex flex-wrap justify-start items-start">
+          {playlists1.map(playlist => (
+            <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
+          ))}
+        </div>
 
-      <SectionHeading>Premier League</SectionHeading>
-      <div className="flex flex-wrap justify-start items-start">
-        {playlists3.map(playlist => (
-          <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
-        ))}
+        <SectionHeading>Gym Inspiration</SectionHeading>
+        <div className="flex flex-wrap justify-start items-start">
+          {playlists2.map(playlist => (
+            <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
+          ))}
+        </div>
+
+        <SectionHeading>Premier League</SectionHeading>
+        <div className="flex flex-wrap justify-start items-start">
+          {playlists3.map(playlist => (
+            <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
+          ))}
+        </div>
       </div>
     </div>
   );
