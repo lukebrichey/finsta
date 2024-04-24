@@ -4,7 +4,6 @@ import Feed from '../components/Feed';
 import arsenal from '../../images/arsenal.png';
 import liverpool from '../../images/liverpool.png';
 import rugby from '../../images/rugby.png';
-import ScrollTracker from '../components/scrolltracker';
 
 // Mock data to simulate a list of posts. Replace with your actual data fetching logic.
 const postsData = [
