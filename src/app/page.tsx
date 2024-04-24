@@ -4,9 +4,46 @@ import Feed from '../components/Feed';
 import arsenal from '../../images/arsenal.png';
 import liverpool from '../../images/liverpool.png';
 import rugby from '../../images/rugby.png';
+import ScrollTracker from '../components/scrolltracker';
 
 // Mock data to simulate a list of posts. Replace with your actual data fetching logic.
 const postsData = [
+  {
+    user: {
+      username: "Michaela",
+      avatarUrl: 'https://github.com/shadcn.png'
+    },
+    image: rugby,
+    comments: [
+      { username: "Michaela", text: "I love rugby!" },
+      { username: "Luke", text: "I prefer the NFL!" },
+      { username: "Michaela", text: "Freak" }
+    ]
+  },
+  {
+    user: {
+      username: "Michaela",
+      avatarUrl: 'https://github.com/shadcn.png'
+    },
+    image: rugby,
+    comments: [
+      { username: "Michaela", text: "I love rugby!" },
+      { username: "Luke", text: "I prefer the NFL!" },
+      { username: "Michaela", text: "Freak" }
+    ]
+  },
+  {
+    user: {
+      username: "Michaela",
+      avatarUrl: 'https://github.com/shadcn.png'
+    },
+    image: rugby,
+    comments: [
+      { username: "Michaela", text: "I love rugby!" },
+      { username: "Luke", text: "I prefer the NFL!" },
+      { username: "Michaela", text: "Freak" }
+    ]
+  },
   {
     user: {
       username: "Michaela",
@@ -41,15 +78,15 @@ const postsData = [
   },
 ];
 
-export default async function Home() {
-
+export default function Home() {
   return (
-    <div>
-      <Head>
-        <title>Instagram Clone</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Feed posts={postsData} />
-    </div>
+      <div>
+          <Head>
+              <title>Instagram Clone</title>
+              <link rel="icon" href="/favicon.ico" />
+          </Head>
+          <Feed posts={postsData} />
+      </div>
   );
 }
+
