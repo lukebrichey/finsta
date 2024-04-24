@@ -30,7 +30,7 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col items-start p-8">
+    <div className="flex flex-col items-start h-screen p-8 overflow-y-auto">
       <div className="flex justify-end">
         <InputDemo />
       </div>
