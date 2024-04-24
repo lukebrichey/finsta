@@ -16,7 +16,14 @@ export function InputDemo() {
       placeholder="Create your own feed"
       value={inputValue}
       onChange={handleChange}
-      style={{ width: '300px', color: 'black' }}  
+      style={{
+        width: '300px',
+        color: 'white',           
+        backgroundColor: 'black', 
+        borderColor: 'white',    
+        borderWidth: '1px',       
+        borderStyle: 'solid'      
+      }}
     />
   );
 }
