@@ -28,8 +28,10 @@ const SidePanel = async ({ avatarUrl }: { avatarUrl: string }) => {
 
     return (
         <div className="w-64 h-full shadow-lg px-4 py-8 border-r border-gray-800">
-            <div className="mt-8 space-y-8">
+            <div>
                 <FinstaLogo />
+            </div>
+            <div className="mt-8 space-y-8">
                 <MenuItem icon={<HomeIcon className="h-6 w-6" />} label="Home" route="/" />
                 <MenuItem icon={<HeartIcon className="h-6 w-6" />} label="Activity" route="/activity" />
                 <MenuItem icon={<RectangleStackIcon className="h-6 w-6" />} label="Feeds" route="/feeds"/>

@@ -30,6 +30,7 @@ model Post {
 
 model Profile {
   id       String  @id @default(cuid())
+  displayName String?
   username String  @unique
   bio      String?
   userId   String  @unique
