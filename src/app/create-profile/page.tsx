@@ -4,6 +4,7 @@ import React from 'react';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import createProfile from './createProfile';
 
 // shadcn ui imports
 import { Button } from "@/components/ui/button"
@@ -34,17 +35,13 @@ const ProfileForm = () => {
         },
     });
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
-    };
-
     return (
         <div className="flex flex-col items-center">
             <h1 className="font-bold p-2 mt-6 text-xl">
                 Create Profile
             </h1>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 p-6 rounded-lg shadow w-1/2">
+                <form action={createProfile} className="space-y-8 p-6 rounded-lg shadow w-1/2">
                     <FormField
                     control={form.control}
                     name="username"
