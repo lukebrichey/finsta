@@ -29,7 +29,8 @@ export const profileRouter = createTRPCRouter({
         .input(z.object({
             displayName: z.string(),
             username: z.string(),
-            bio: z.string().optional()
+            bio: z.string().optional(),
+            avatarUrl: z.string()
         }))
         .mutation(async ({ ctx, input }) => {
             const profile = await ctx.db.profile.create({

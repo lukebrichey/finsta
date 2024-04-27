@@ -1,5 +1,4 @@
 // pages/index.js
-import Head from 'next/head';
 import Feed from '../components/Feed';
 import arsenal from '../../images/arsenal.png';
 import liverpool from '../../images/liverpool.png';
@@ -80,10 +79,6 @@ const postsData = [
 export default function Home() {
   return (
       <div>
-          <Head>
-              <title>Instagram Clone</title>
-              <link rel="icon" href="/favicon.ico" />
-          </Head>
           <Feed posts={postsData} />
       </div>
   );
