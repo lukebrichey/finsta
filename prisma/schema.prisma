@@ -14,6 +14,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  createdBy   Profile @relation(fields: [createdById], references: [id])
+  createdById String
+
+  post Post @relation("PostComments", fields: [postId], references: [id])
+
+  postId Int
+
+  @@index([createdAt])
+}
+
 model Post {
   id        Int      @id @default(autoincrement())
   name      String
@@ -23,24 +39,31 @@ model Post {
   createdBy   Profile @relation(fields: [createdById], references: [id])
   createdById String
 
+  description String
+  imageUrl    String
+  comments    Comment[] @relation("PostComments")
+
   interestedProfiles Profile[] @relation("InterestedPosts")
 
-  @@index([name])
+  @@index([createdAt])
 }
 
 model Profile {
-  id       String  @id @default(cuid())
+  id          String  @id @default(cuid())
   displayName String?
-  username String  @unique
-  bio      String?
-  userId   String  @unique
-  avatarUrl String?
+  username    String  @unique
+  bio         String?
+  userId      String  @unique
+  avatarUrl   String?
 
   user            User      @relation(fields: [userId], references: [id])
   mutuals         Profile[] @relation("profileMutuals")
   mutualsOf       Profile[] @relation("profileMutuals")
   posts           Post[]
   interestedPosts Post[]    @relation("InterestedPosts")
+  comments         Comment[]
+
+  @@index([displayName])
 }
 
 // Necessary for Next auth

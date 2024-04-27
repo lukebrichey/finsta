@@ -1,8 +1,5 @@
 // pages/index.js
 import Feed from '../components/Feed';
-import arsenal from '../../images/arsenal.png';
-import liverpool from '../../images/liverpool.png';
-import rugby from '../../images/rugby.png';
 
 // Mock data to simulate a list of posts. Replace with your actual data fetching logic.
 const postsData = [
@@ -11,7 +8,7 @@ const postsData = [
       username: "Michaela",
       avatarUrl: 'https://github.com/shadcn.png'
     },
-    image: rugby,
+    imageUrl: 'https://lukebrichey.github.io/finsta-images/liverpool.png',
     comments: [
       { username: "Michaela", text: "I love rugby!" },
       { username: "Luke", text: "I prefer the NFL!" },
@@ -23,7 +20,7 @@ const postsData = [
       username: "Michaela",
       avatarUrl: 'https://github.com/shadcn.png'
     },
-    image: rugby,
+    imageUrl: 'https://lukebrichey.github.io/finsta-images/rugby.png',
     comments: [
       { username: "Michaela", text: "I love rugby!" },
       { username: "Luke", text: "I prefer the NFL!" },
@@ -35,7 +32,7 @@ const postsData = [
       username: "Michaela",
       avatarUrl: 'https://github.com/shadcn.png'
     },
-    image: rugby,
+    imageUrl: 'https://lukebrichey.github.io/finsta-images/arsenal.png',
     comments: [
       { username: "Michaela", text: "I love rugby!" },
       { username: "Luke", text: "I prefer the NFL!" },
@@ -47,7 +44,7 @@ const postsData = [
       username: "Michaela",
       avatarUrl: 'https://github.com/shadcn.png'
     },
-    image: rugby,
+    imageUrl: 'https://lukebrichey.github.io/finsta-images/rugby.png',
     comments: [
       { username: "Michaela", text: "I love rugby!" },
       { username: "Luke", text: "I prefer the NFL!" },
@@ -59,7 +56,7 @@ const postsData = [
       username: "bob",
       avatarUrl: 'https://github.com/shadcn.png'
     },
-    image: arsenal,
+    imageUrl: 'https://lukebrichey.github.io/finsta-images/arsenal.png',
     comments: [
       { username: "alice", text: "Loved this!" }
     ]
@@ -69,7 +66,7 @@ const postsData = [
       username: "bob",
       avatarUrl: 'https://github.com/shadcn.png'
     },
-    image: liverpool,
+    imageUrl: 'https://lukebrichey.github.io/finsta-images/liverpool.png',
     comments: [
       { username: "alice", text: "nice" }
     ]

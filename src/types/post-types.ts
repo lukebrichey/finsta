@@ -1,5 +1,3 @@
-import type { StaticImageData } from "next/image";
-
 export type User = {
     username: string,
     avatarUrl: string
@@ -12,6 +10,6 @@ export type Comment = {
 
 export type PostProps = {
     user: User,
-    image: StaticImageData,
+    imageUrl: string,
     comments: Comment[]
 };

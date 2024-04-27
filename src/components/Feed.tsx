@@ -12,7 +12,7 @@ const Feed: React.FC<FeedProps> = ({ posts }) => {
         <Post
           key={index}
           user={post.user}
-          image={post.image}
+          imageUrl={post.imageUrl}
           comments={post.comments}
         />
       ))}

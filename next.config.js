@@ -21,6 +21,12 @@ const nextConfig = {
         hostname: 'plus.unsplash.com',
         port: '',
         pathname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'lukebrichey.github.io',
+        port: '',
+        pathname: '**'
       }
     ],
   },

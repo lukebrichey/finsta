@@ -3,7 +3,7 @@ import type { PostProps } from '../types/post-types';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { SparklesIcon, ChatBubbleOvalLeftIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
 
-export default function Post({ user, image, comments }: PostProps) {
+export default function Post({ user, imageUrl, comments }: PostProps) {
     return (
         <div className="rounded-lg mx-auto my-4 max-w-xl w-1/3">
             <div className="flex items-center p-4">
@@ -13,8 +13,8 @@ export default function Post({ user, image, comments }: PostProps) {
                 </Avatar>
                 <strong className="font-bold">{user.username}</strong>
             </div>
-            <div className="w-full flex flex-row justify-center border border-gray-500 rounded-lg">
-                <Image src={image} alt="Post image" className="object-contain border-none rounded-lg" />
+            <div className="w-full flex flex-row justify-center border border-gray-500 rounded-lg relative overflow-hidden h-80">
+                <Image src={imageUrl} fill alt="Post image" objectFit="cover" className="object-cover border-none rounded-lg" />
             </div>
             <div className="flex flex-row items-center w-full pt-4 ml-2 space-x-3">
                 <SparklesIcon className="h-6 w-6 hover:cursor-pointer" />
