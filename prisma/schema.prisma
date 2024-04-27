@@ -34,6 +34,7 @@ model Profile {
   username String  @unique
   bio      String?
   userId   String  @unique
+  avatarUrl String?
 
   user            User      @relation(fields: [userId], references: [id])
   mutuals         Profile[] @relation("profileMutuals")
