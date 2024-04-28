@@ -1,15 +1,18 @@
-export type User = {
-    username: string,
-    avatarUrl: string
-};
+import type { Profile, Comment } from '@prisma/client';
 
-export type Comment = {
-    username: string,
-    text: string
-};
+interface ProfileSubset {
+    username: string;
+    avatarUrl: string | null;
+}
 
-export type PostProps = {
-    user: User,
-    imageUrl: string,
-    comments: Comment[]
-};
+interface ExtendedComment extends Comment {
+  createdBy: Profile;
+}
+
+interface PostViewType {
+  createdBy: ProfileSubset;
+  comments: ExtendedComment[];
+  imageUrl: string;
+}
+
+export type { PostViewType, ExtendedComment };

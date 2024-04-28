@@ -3,113 +3,57 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-    // Mock data simplified for seeding purposes
-    const userData = [
+    console.log('Start seeding...');
+
+    // Fetch Bob's profile
+    const profile = await prisma.profile.findUnique({
+        where: { username: 'bob' },
+    });
+
+    const samplePosts = [
         {
-            username: "Michaela",
-            avatarUrl: 'https://github.com/shadcn.png',
-            displayName: 'Michaela Johnson',
-            bio: 'Rugby lover and web developer',
-            userId: 'michaela-user-id',
+            caption: 'i love the steelers',
+            createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000),
+            description: 'A photo of Santonio Holmes making a catch against the Arizona Cardinals in the Super Bowl',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/holmes.jpeg',
         },
         {
-            username: "bob",
-            avatarUrl: 'https://github.com/shadcn.png',
-            displayName: 'Bob Smith',
-            bio: 'Sports fan and coder',
-            userId: 'bob-user-id',
+            caption: 'jordan is my goat',
+            createdAt: new Date(Date.now() - 20 * 60 * 60 * 1000),
+            description: 'A photo of Michael Jordan\'s iconic free throw line dunk',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/jordan.jpeg',
         },
         {
-            username: "alice",
-            avatarUrl: 'https://github.com/shadcn.png',
-            displayName: 'Alice Wonderland',
-            bio: 'Enjoying life and sports',
-            userId: 'alice-user-id',
-        },
-        {
-            username: "Luke",
-            avatarUrl: 'https://github.com/shadcn.png',
-            displayName: 'Luke Skywalker',
-            bio: 'NFL Fan and Rebel',
-            userId: 'luke-user-id',
+            caption: 'lebron is aight',
+            createdAt: new Date(Date.now() - 16 * 60 * 60 * 1000),
+            description: 'A photo of LeBron James\' iconic block in the 2016 NBA Finals',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/lebron_block.jpeg',
         }
     ];
 
-    // Create users
-    for (const user of userData) {
-        await prisma.profile.upsert({
-            where: { username: user.username },
-            update: {},
-            create: {
-                username: user.username,
-                avatarUrl: user.avatarUrl,
-                displayName: user.displayName,
-                bio: user.bio,
-                userId: user.userId, // Assuming this links to a User model or authentication system
+    if (!profile) {
+        console.error('Bob\'s profile not found');
+        return;
+    }
+
+    // Create posts for Bob
+    for (const post of samplePosts) {
+        await prisma.post.create({
+            data: {
+                caption: post.caption,
+                createdAt: post.createdAt,
+                description: post.description,
+                imageUrl: post.imageUrl,
+                createdBy: {
+                    connect: {
+                        id: profile.id,
+                    },
+                }
             },
         });
     }
 
-    // Mock posts data
-    const postsData = [
-        {
-            username: "Michaela",
-            imageUrl: 'https://example.com/rugby.jpg',
-            comments: [
-                { username: "Michaela", text: "I love rugby!" },
-                { username: "Luke", text: "I prefer the NFL!" },
-                { username: "Michaela", text: "Freak" }
-            ]
-        },
-        {
-            username: "bob",
-            imageUrl: 'https://example.com/arsenal.jpg',
-            comments: [
-                { username: "alice", text: "Loved this!" }
-            ]
-        },
-        {
-            username: "bob",
-            imageUrl: 'https://example.com/liverpool.jpg',
-            comments: [
-                { username: "alice", text: "nice" }
-            ]
-        }
-    ];
-
-    // Create posts and comments
-    for (const postData of postsData) {
-        const creator = await prisma.profile.findUnique({
-            where: { username: postData.username }
-        });
-
-        if (creator) {
-            const post = await prisma.post.create({
-                data: {
-                    name: 'A Post About Sports',
-                    description: 'Discussing recent sports events',
-                    imageUrl: postData.imageUrl,
-                    createdBy: { connect: { id: creator.id } },
-                }
-            });
-
-            for (const comment of postData.comments) {
-                const commenter = await prisma.profile.findUnique({
-                    where: { username: comment.username }
-                });
-
-                if (commenter) {
-                    await prisma.comment.create({
-                        data: {
-                            content: comment.text,
-                            createdBy: { connect: { id: commenter.id } },
-                            post: { connect: { id: post.id } }
-                        }
-                    });
-                }
-            }
-        }
-    }
+    console.log('Seeding finished.');
 }
 
 main()

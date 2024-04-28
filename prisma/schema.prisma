@@ -32,7 +32,7 @@ model Comment {
 
 model Post {
   id        Int      @id @default(autoincrement())
-  name      String
+  caption      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -53,10 +53,10 @@ model Profile {
   displayName String?
   username    String  @unique
   bio         String?
-  userId      String  @unique
+  userId      String?  @unique
   avatarUrl   String?
 
-  user            User      @relation(fields: [userId], references: [id])
+  user            User?      @relation(fields: [userId], references: [id])
   mutuals         Profile[] @relation("profileMutuals")
   mutualsOf       Profile[] @relation("profileMutuals")
   posts           Post[]
