@@ -1,17 +1,18 @@
-import type { StaticImageData } from "next/image";
+import type { Profile, Comment } from '@prisma/client';
 
-export type User = {
-    username: string,
-    avatarUrl: string
-};
+interface ProfileSubset {
+    username: string;
+    avatarUrl: string | null;
+}
 
-export type Comment = {
-    username: string,
-    text: string
-};
+interface ExtendedComment extends Comment {
+  createdBy: Profile;
+}
 
-export type PostProps = {
-    user: User,
-    image: StaticImageData,
-    comments: Comment[]
-};
+interface PostViewType {
+  createdBy: ProfileSubset;
+  comments: ExtendedComment[];
+  imageUrl: string;
+}
+
+export type { PostViewType, ExtendedComment };
