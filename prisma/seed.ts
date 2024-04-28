@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
+// Run this script with `npx prisma db seed`
+
 const prisma = new PrismaClient();
 
 async function main() {
