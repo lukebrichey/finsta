@@ -49,19 +49,13 @@ const Page = () => {
           ))}
         </div>
 
-        <SectionHeading>Gym Inspiration</SectionHeading>
+        <SectionHeading>Recommended Feeds</SectionHeading>
         <div className="flex flex-wrap justify-start items-start">
           {playlists2.map(playlist => (
             <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
           ))}
         </div>
 
-        <SectionHeading>Premier League</SectionHeading>
-        <div className="flex flex-wrap justify-start items-start">
-          {playlists3.map(playlist => (
-            <PlaylistCard key={playlist.id} imageSrc={playlist.imageUrl} label={playlist.label} feedId={playlist.id} />
-          ))}
-        </div>
       </div>
     </div>
   );
