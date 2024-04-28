@@ -13,6 +13,17 @@ interface PostViewType {
   createdBy: ProfileSubset;
   comments: ExtendedComment[];
   imageUrl: string;
+  id: number;
+  caption: string;
+  profileId: string;
 }
 
-export type { PostViewType, ExtendedComment };
+interface PostsType {
+  createdBy: ProfileSubset;
+  comments: ExtendedComment[];
+  imageUrl: string;
+  id: number;
+  caption: string;
+}
+
+export type { PostViewType, ExtendedComment, PostsType };

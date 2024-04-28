@@ -25,8 +25,21 @@ export const postRouter = createTRPCRouter({
       },
     });
   }),
-
   getSecretMessage: protectedProcedure.query(() => {
     return "you can now see this secret message!";
   }),
+  addInterest: protectedProcedure
+    .input(z.object({ postId: z.number(), profileId: z.string()}))
+    .mutation(({ ctx, input }) => {
+      return ctx.db.post.update({
+        where: { id: input.postId },
+        data: {
+          interestedProfiles: {
+            connect: {
+              id: input.profileId,
+            },
+          },
+        },
+      });
+    }),
 });
