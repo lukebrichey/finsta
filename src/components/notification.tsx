@@ -8,7 +8,7 @@ interface NotificationProps {
   text: string; // Specify text prop as a string
 }
 
-const NotificationComponent = ({ icon, text }) => {
+const NotificationComponent = ({icon, text} : NotificationProps) => {
   return (
     <Card className="border border-white">
       <CardContent className="flex items-center p-4 bg-white text-black">
