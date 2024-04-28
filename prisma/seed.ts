@@ -9,7 +9,7 @@ async function main() {
 
     // Fetch Bob's profile
     const profile = await prisma.profile.findUnique({
-        where: { username: 'peaches22' },
+        where: { username: 'lukebrichey' },
     });
 
     const samplePosts = [
