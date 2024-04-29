@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar'; // Update with your actual path
+import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar'; 
 
 const getRandomAvatarUrl = () => {
   // List of avatar URLs
@@ -29,18 +29,18 @@ const usernames = ['stem.cel', 'peaches36', 'arsenallover', 'michaela.baby', 'Ev
 
 const CarouselSpacing = () => {
   return (
-    <div className="w-full max-w-md mx-auto"> {/* Adjust the max-width here */}
+    <div className="w-full max-w-md mx-auto">
       <Carousel>
         <CarouselContent className="-ml-1">
           {usernames.map((username, index) => (
             <CarouselItem key={index} className="pl-2 md:pl-4 lg:pl-6 xl:pl-8">
               <div className="p-1">
-                <Card className="border border-white">
-                  <CardContent className="flex items-center p-4 bg-white text-black">
-                    <Avatar className="mr-3">
+                <Card className="bg-black border border-white rounded-lg shadow-lg">
+                  <CardContent className="flex items-center p-3">
+                    <Avatar className="mr-3" style={{ width: '40px', height: '40px' }}>
                       <AvatarImage src={getRandomAvatarUrl()} alt={`Avatar ${index}`} />
                     </Avatar>
-                    <span className="text-lg font-semibold">{username}</span>
+                    <span className="text-white text-sm font-semibold">{username}</span>
                   </CardContent>
                 </Card>
               </div>
@@ -55,7 +55,3 @@ const CarouselSpacing = () => {
 };
 
 export default CarouselSpacing;
-
-
-
-
