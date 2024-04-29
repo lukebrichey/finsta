@@ -26,50 +26,50 @@ export const feedRouter = createTRPCRouter({
 
       return posts;
     }),
-    getFeeds: publicProcedure.query(async ({ ctx }) => {
-      const profileId = await ctx.db.profile.findFirst({
-        where: {
-          userId: ctx.session?.user.id,
-        },
-      }).then(profile => profile?.id);
-    
+  getFeeds: publicProcedure.query(async ({ ctx }) => {
+    const profileId = await ctx.db.profile.findFirst({
+      where: {
+        userId: ctx.session?.user.id,
+      },
+    }).then(profile => profile?.id);
+  
 
-      // Get profile's interested posts
-      const interestedPosts = await ctx.db.post.findMany({
-        where: {
-          interestedProfiles: {
-            some: {
-              id: profileId,
-            },
+    // Get profile's interested posts
+    const interestedPosts = await ctx.db.post.findMany({
+      where: {
+        interestedProfiles: {
+          some: {
+            id: profileId,
           },
         },
-      });
+      },
+    });
 
-      // Iterate through posts and rank their feeds by interest
-      const feedMap = new Map<number, number>();
+    // Iterate through posts and rank their feeds by interest
+    const feedMap = new Map<number, number>();
 
-      interestedPosts.forEach(post => {
-        const feedId = post.feedId ? post.feedId : 0;
-        const interestCount = feedMap.get(feedId) ?? 0;
-        feedMap.set(feedId, interestCount + 1);
-      });
+    interestedPosts.forEach(post => {
+      const feedId = post.feedId ? post.feedId : 0;
+      const interestCount = feedMap.get(feedId) ?? 0;
+      feedMap.set(feedId, interestCount + 1);
+    });
 
-      // Get all feeds
-      const feeds = await ctx.db.feed.findMany();
+    // Get all feeds
+    const feeds = await ctx.db.feed.findMany();
 
-      // Sort feeds by interest
-      feeds.sort((a, b) => {
-        const aInterest = feedMap.get(a.id) ?? 0;
-        const bInterest = feedMap.get(b.id) ?? 0;
+    // Sort feeds by interest
+    feeds.sort((a, b) => {
+      const aInterest = feedMap.get(a.id) ?? 0;
+      const bInterest = feedMap.get(b.id) ?? 0;
 
-        return bInterest - aInterest;
-      });
+      return bInterest - aInterest;
+    });
 
-      // Mark top 5 feeds as recommended, rest as not recommended
-      feeds.forEach((feed, index) => {
-        feed.recommended = index < 5;
-      });
+    // Mark top 5 feeds as recommended, rest as not recommended
+    feeds.forEach((feed, index) => {
+      feed.recommended = index < 5;
+    });
 
-      return feeds;
-    }) 
+    return feeds;
+  }),
 });
