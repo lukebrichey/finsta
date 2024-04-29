@@ -2,6 +2,7 @@ import { api } from '~/trpc/server';
 import { getServerAuthSession } from '~/server/auth';
 import { redirect } from 'next/navigation';
 import Feed from '../../../components/Feed';
+import BackButton from '../../../components/BackButton';
 
 export default async function FeedPage({
   params,
@@ -30,6 +31,9 @@ export default async function FeedPage({
 
     return (
       <div>
+        <div style={{ position: 'fixed', top: 30, left: 300 }}>
+          <BackButton />
+        </div>
         <Feed posts={postsData} profileId={profile.id} />
       </div>
     );

@@ -59,6 +59,12 @@ model Feed {
   coverImageUrl String
   label          String
 
+  saved      Boolean
+  savedBy    Profile[] @relation("profileSavedFeeds")
+
+  recommended Boolean
+  recommendedFor Profile[] @relation("profileRecommendedFeeds")
+
   posts Post[] @relation("FeedPosts")
 }
 
@@ -76,6 +82,8 @@ model Profile {
   posts           Post[]
   interestedPosts Post[]    @relation("InterestedPosts")
   comments         Comment[]
+  savedFeeds       Feed[]    @relation("profileSavedFeeds")
+  recommendedFeeds Feed[]    @relation("profileRecommendedFeeds")
 
   @@index([displayName])
 }

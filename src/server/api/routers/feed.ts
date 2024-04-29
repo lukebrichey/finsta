@@ -26,4 +26,9 @@ export const feedRouter = createTRPCRouter({
 
       return posts;
     }),
+  getFeeds: publicProcedure.query(async ({ ctx }) => {
+    const feeds = await ctx.db.feed.findMany();
+
+    return feeds;
+  }),
 });
