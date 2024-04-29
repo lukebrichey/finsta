@@ -3,6 +3,7 @@ import { getServerAuthSession } from '~/server/auth';
 import { redirect } from 'next/navigation'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { api } from '~/trpc/server';
+import Image from 'next/image';
 
 export default async function ProfilePage() {
     const session = await getServerAuthSession();
@@ -21,6 +22,8 @@ export default async function ProfilePage() {
         return redirect('/create-profile');
     }
 
+    const posts = await api.post.getPostsByProfileId(profile.id);
+
     return (
         <div className="mx-auto max-w-lg p-5">
             <div className="flex items-center border-b-2 pb-5">
@@ -37,6 +40,18 @@ export default async function ProfilePage() {
             <div className="flex justify-between pt-5">
                 <p><span className="font-bold">{profile._count.posts}</span> posts</p>
                 <p><span className="font-bold">{profile._count.mutuals}</span> mutuals</p>
+            </div>
+            <div className="grid grid-cols-3 gap-4 pt-5">
+                {posts.map((post) => (
+                <div key={post.id} className="relative h-40 p-4 shadow-md">
+                    <Image
+                    src={post.imageUrl}
+                    alt="Post image"
+                    fill={true}
+                    className='rounded-lg'
+                    />
+                </div>
+                ))}
             </div>
         </div>
     );

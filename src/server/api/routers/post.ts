@@ -7,9 +7,14 @@ import {
 } from "~/server/api/trpc";
 
 export const postRouter = createTRPCRouter({
-  getLatestPosts: publicProcedure.query(({ ctx }) => {
+  getLatestPosts: publicProcedure.query(async ({ ctx }) => {
+    const postsCount = await ctx.db.post.count();
+    const skip = Math.floor(Math.random() * postsCount);
+
     return ctx.db.post.findMany({
       orderBy: { createdAt: "desc" },
+      take: 20,
+      skip: skip,
       include: {
         createdBy: {
           select: {
@@ -39,6 +44,20 @@ export const postRouter = createTRPCRouter({
               id: input.profileId,
             },
           },
+        },
+      });
+    }),
+  getPostsByProfileId: protectedProcedure
+    .input(z.string())
+    .query(async ({ ctx, input }) => {
+      return ctx.db.post.findMany({
+        where: {
+          createdBy: {
+            id: input,
+          },
+        },
+        orderBy: {
+          createdAt: "desc",
         },
       });
     }),
