@@ -2,12 +2,21 @@
 
 import { SparklesIcon } from "@heroicons/react/24/outline";
 import { SparklesIcon as SparklesIconFilled } from "@heroicons/react/24/solid";
-import { useState } from "react";
-import { addInterest, removeInterest } from "./interestActions";
+import { useState, useEffect } from "react";
+import { addInterest, removeInterest, getIsInterested } from "./interestActions";
 
 export default function Interest({ postId, profileId } : { postId: number, profileId: string }) {
     const [isInterested, setIsInterested] = useState(false);
     
+    useEffect(() => {
+        const fetchInterest = async () => {
+            const interested = await getIsInterested(postId, profileId);
+            setIsInterested(interested ?? false);
+        };
+
+        fetchInterest().catch(console.error);
+    }, [postId, profileId]);
+
     return (
         <div className="flex flex-col items-center">
             {

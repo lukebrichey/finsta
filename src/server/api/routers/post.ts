@@ -75,4 +75,16 @@ export const postRouter = createTRPCRouter({
         },
       });
     }),
+  getPost: protectedProcedure
+    .input(z.number())
+    .query(async ({ ctx, input }) => {
+      return ctx.db.post.findFirst({
+        where: {
+          id: input,
+        },
+        include: {
+          interestedProfiles: true,
+        }
+      });
+    }),
 });
