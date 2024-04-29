@@ -65,9 +65,9 @@ export const feedRouter = createTRPCRouter({
       return bInterest - aInterest;
     });
 
-    // Mark top 5 feeds as recommended, rest as not recommended
+    // Mark top 10 feeds as recommended, rest as not recommended
     feeds.forEach((feed, index) => {
-      feed.recommended = index < 5;
+      feed.recommended = index < 10;
     });
 
     return feeds;

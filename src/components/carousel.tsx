@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { Avatar, AvatarImage, AvatarFallback } from '../components/ui/avatar'; 
+import { Avatar, AvatarImage } from '../components/ui/avatar'; 
 
 const getRandomAvatarUrl = () => {
   // List of avatar URLs
@@ -47,8 +47,8 @@ const CarouselSpacing = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="text-gray-500" />
+        <CarouselNext className="text-gray-500" />
       </Carousel>
     </div>
   );
