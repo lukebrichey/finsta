@@ -4,7 +4,7 @@ import CarouselSpacing from '../../components/carousel';
 
 const commentNotifications = [
   { avatarUrl: 'https://lukebrichey.github.io/finsta-images/profiles/charlie.png', text: "peaches24 commented: 'OMG!'" },
-  { avatarUrl: 'https://lukebrichey.github.io/finsta-images/profiles/man.png', text: "michaela_bibby commented: 'Interesting!'" },
+  { avatarUrl: 'https://lukebrichey.github.io/finsta-images/profiles/michaela.png', text: "michaela_bibby commented: 'Interesting!'" },
   { avatarUrl: 'https://lukebrichey.github.io/finsta-images/profiles/olivia.png', text: "guitarlover23 commented: 'oooo'" },
   { avatarUrl: 'https://lukebrichey.github.io/finsta-images/profiles/tom.png', text: "tomcd commented: 'Up the Shire'" },
   { avatarUrl: 'https://lh3.googleusercontent.com/a/ACg8ocK3ssjJ8fLG-olvvAWDi7xUZuxizSNYDqPN1AWOT0amvIjZuA=s96-c', text: "eli98 commented: 'Loving the content!'" },

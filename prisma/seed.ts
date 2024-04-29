@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { Young_Serif } from 'next/font/google';
 
 // Run this script with `npx prisma db seed`
 
@@ -14,64 +15,64 @@ async function main() {
 
     const samplePosts = [
         {
-            caption: 'Look what I have in the shop today! Beautiful guitar',
+            caption: 'It\'s the most wonderful time of the year',
             createdAt: "2021-12-17T03:28:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit.png',
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ1.png',
         },
         {
-            caption: 'Check out the link in my bio to hear my new cover',
+            caption: 'Just a bit of Christmas inspiration for those of you still decorating',
             createdAt: "2020-09-08T16:47:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit2.png',
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ2.png',
         },
         {
-            caption: 'I love going to guitar shops',
+            caption: 'Every year I attempt a ginger bread house and every year I fail',
             createdAt: "2023-07-23T09:13:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit3.png',
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ3.png',
         },
         {
-            caption: 'Great concert last night',
+            caption: '3 days left!',
             createdAt: "2022-08-02T21:55:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit4.png',
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ4.png',
         },
         {
-            caption: 'Brand new guitars in, just in time for christmas',
+            caption: 'Like this post if you believe in Father Christmas',
             createdAt: "2024-01-10T13:42:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit5.png',
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ5.png',
         },
         {
-            caption: 'First concert with my new guitar',
+            caption: 'Have a holly jolly Christmas',
             createdAt: "2021-09-01T14:32:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit6.png',
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ5.png',
         },
         {
-            caption: 'Cover of Fast Car about to be uploaded',
-            createdAt: "2024-03-07T17:18:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit7.png',
+            caption: 'GOOD KING WENCESLAS',
+            createdAt: "2024-01-07T17:18:00Z",
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ6.png',
         },
         {
-            caption: 'Did anyone else know this is how guitars are made??',
+            caption: 'Do you prefer Christmas or summer?',
             createdAt: "2021-09-01T18:17:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit8.png',
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ7.png',
         },
         {
-            caption: 'Sitting and playing',
+            caption: 'I love a good Christmas decoration',
             createdAt: "2023-01-28T07:21:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit9.png',
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ8.png',
         },
         {
-            caption: 'Me and my love on a nature walk',
+            caption: 'LAST CHRISTMAS I GAVE YOU MY HEART',
             createdAt: "2021-09-01T17:20:00Z",
-            description: 'Guitar',
-            imageUrl: 'https://lukebrichey.github.io/finsta-images/guitar/guit10.png',
+            description: 'Boardgames',
+            imageUrl: 'https://lukebrichey.github.io/finsta-images/christmas/christ9.png',
         },
     ];
 
