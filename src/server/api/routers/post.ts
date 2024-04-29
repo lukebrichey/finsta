@@ -47,6 +47,20 @@ export const postRouter = createTRPCRouter({
         },
       });
     }),
+  removeInterest: protectedProcedure
+    .input(z.object({ postId: z.number(), profileId: z.string()}))
+    .mutation(({ ctx, input }) => {
+      return ctx.db.post.update({
+        where: { id: input.postId },
+        data: {
+          interestedProfiles: {
+            disconnect: {
+              id: input.profileId,
+            },
+          },
+        },
+      });
+    }),
   getPostsByProfileId: protectedProcedure
     .input(z.string())
     .query(async ({ ctx, input }) => {
