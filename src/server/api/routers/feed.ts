@@ -1,6 +1,5 @@
 import { publicProcedure, createTRPCRouter } from "../trpc";
 import { z } from "zod";
-import type { Feed } from "@prisma/client";
 
 export const feedRouter = createTRPCRouter({
   getPosts: publicProcedure
@@ -35,33 +34,42 @@ export const feedRouter = createTRPCRouter({
       }).then(profile => profile?.id);
     
 
-      // Raw SQL query to fetch feeds ordered by the count of posts that the current profile is interested in
-      const feeds = await ctx.db.$queryRaw<Feed[]>`
-        SELECT f.*, COUNT(p.id) AS InterestedCount
-        FROM Feed f
-        LEFT JOIN Post p ON p.feedId = f.id
-        LEFT JOIN PostInterestedProfile pip ON pip.postId = p.id AND pip.profileId = ${profileId}
-        GROUP BY f.id
-        ORDER BY InterestedCount DESC
-        LIMIT 5
-      `;
-    
-      const feedIds = feeds.map(feed => feed.id);
-
-      if (feedIds.length > 0) {
-        await ctx.db.feed.updateMany({
-          where: {
-            id: {
-              in: feedIds
-            }
+      // Get profile's interested posts
+      const interestedPosts = await ctx.db.post.findMany({
+        where: {
+          interestedProfiles: {
+            some: {
+              id: profileId,
+            },
           },
-          data: {
-            recommended: true,
-          }
-        });
-      }
-    
-      return feeds;
+        },
+      });
 
+      // Iterate through posts and rank their feeds by interest
+      const feedMap = new Map<number, number>();
+
+      interestedPosts.forEach(post => {
+        const feedId = post.feedId ? post.feedId : 0;
+        const interestCount = feedMap.get(feedId) ?? 0;
+        feedMap.set(feedId, interestCount + 1);
+      });
+
+      // Get all feeds
+      const feeds = await ctx.db.feed.findMany();
+
+      // Sort feeds by interest
+      feeds.sort((a, b) => {
+        const aInterest = feedMap.get(a.id) ?? 0;
+        const bInterest = feedMap.get(b.id) ?? 0;
+
+        return bInterest - aInterest;
+      });
+
+      // Mark top 5 feeds as recommended, rest as not recommended
+      feeds.forEach((feed, index) => {
+        feed.recommended = index < 5;
+      });
+
+      return feeds;
     }) 
 });
