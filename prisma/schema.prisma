@@ -43,9 +43,29 @@ model Post {
   imageUrl    String
   comments    Comment[] @relation("PostComments")
 
+  feedId Int?
+  feed   Feed? @relation("FeedPosts", fields: [feedId], references: [id])
+
   interestedProfiles Profile[] @relation("InterestedPosts")
 
   @@index([createdAt])
+}
+
+model Feed {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  coverImageUrl String
+  label          String
+
+  saved      Boolean
+  savedBy    Profile[] @relation("profileSavedFeeds")
+
+  recommended Boolean
+  recommendedFor Profile[] @relation("profileRecommendedFeeds")
+
+  posts Post[] @relation("FeedPosts")
 }
 
 model Profile {
@@ -62,6 +82,8 @@ model Profile {
   posts           Post[]
   interestedPosts Post[]    @relation("InterestedPosts")
   comments         Comment[]
+  savedFeeds       Feed[]    @relation("profileSavedFeeds")
+  recommendedFeeds Feed[]    @relation("profileRecommendedFeeds")
 
   @@index([displayName])
 }
