@@ -39,6 +39,11 @@ export default async function ProfilePage() {
             <p className="pt-5">{profile.bio}</p>
             <div className="flex justify-between pt-5">
                 <p><span className="font-bold">{profile._count.posts}</span> posts</p>
+                {/* 
+                    Here we fetch the users' mutuals count. In future work, we would also query 
+                    the mutuals list to display the mutuals as well as their mutuals' posts for 
+                    the Home feed.
+                */}
                 <p><span className="font-bold">{profile._count.mutuals}</span> mutuals</p>
             </div>
             <div className="grid grid-cols-3 gap-4 pt-5">

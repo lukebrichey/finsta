@@ -2,6 +2,7 @@ import { publicProcedure, createTRPCRouter } from "../trpc";
 import { z } from "zod";
 
 export const feedRouter = createTRPCRouter({
+  // This fetches all the posts for a given feed
   getPosts: publicProcedure
     .input(z.number())
     .query(async ({ ctx, input }) => {
@@ -26,6 +27,14 @@ export const feedRouter = createTRPCRouter({
 
       return posts;
     }),
+  /* 
+    This fetches all of the available feeds and ranks them by interest.
+    The top 10 feeds are marked as recommended, while the rest are not.
+    The ranking is based on the number of interested posts in a feed by 
+    the user. Future work would include a much more sophisticated ranking
+    by using the users' mutuals and their mutuals' feeds. We could also track
+    activity within a feed to determine interest.
+  */
   getFeeds: publicProcedure.query(async ({ ctx }) => {
     const profileId = await ctx.db.profile.findFirst({
       where: {

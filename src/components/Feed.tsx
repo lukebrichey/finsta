@@ -7,6 +7,18 @@ type FeedProps = {
 };
 
 export default function Feed({ posts, profileId }: FeedProps ) {
+  /*
+    Feed
+
+    This is the generic Feed component that displays posts. The posts are passed
+    in as a prop and are displayed using the Post component. The Post component
+    is a reusable component that displays a single post. The posts are displayed
+    in a vertical list. The user can scroll through the posts. The user can also
+    interest the posts. Future work would have users able to comment, share, and 
+    interact with the profile that created the post. See the posts router in
+    src/server/api/routers/post.ts for more details on how posts are fetched.
+  */
+
   return (
     <div className="h-screen overflow-y-auto py-4">
       {posts.map((post, index) => (

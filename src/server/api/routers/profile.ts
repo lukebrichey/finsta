@@ -1,4 +1,3 @@
-// server/routers/profileRouter.ts
 import { publicProcedure, protectedProcedure, createTRPCRouter } from '../trpc';
 import { z } from 'zod';
 

@@ -24,6 +24,13 @@ export default async function Home() {
     redirect('/create-profile');
   }
 
+  /*
+    Home Feed
+    The home feed is a feed that displays the latest posts from all the user's 
+    mutuals. We were unable to implement this feature, so currently the home feed
+    is just 20 random posts sorted by the latest post date. See the Feed component
+    for more details.
+  */
   return (
       <div>
           <Feed posts={posts} profileId={profile.id}/>

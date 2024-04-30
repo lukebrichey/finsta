@@ -1,4 +1,3 @@
-// CardContent.tsx
 import React from 'react';
 
 const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>((props, ref) => {

@@ -26,6 +26,14 @@ export default async function FeedPage({
 
     const feedId: number = +params.feedId;
 
+    /* 
+      Here we fetch the posts for the feed. The backend logic can be found at 
+      the feedRouter in src/server/api/routers/feed.ts. We essentially
+      have predefined feeds with associated feedId's. In the future, feeds could 
+      be dynamically generated based on the user's activity as described in the 
+      writeup. Feeds could also possibly be generated for a specific user/persona
+      like a Lebron James feed or a Taylor Swift feed.
+    */
     const postsData = await api.feed.getPosts(feedId);
 
 
