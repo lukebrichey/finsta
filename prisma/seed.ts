@@ -7,16 +7,17 @@ const prisma = new PrismaClient();
 async function main() {
     console.log('Start seeding...');
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars 
     const clearInterestedPosts = async () => {
-        // Fetch lukebrichey's profile
-        const lukebrichey = await prisma.profile.findFirst({
+        // Fetch username's profile
+        const profile = await prisma.profile.findFirst({
             where: {
-                username: 'lukebrichey',
+                username: 'upDog',
             },
         });
 
-        if (!lukebrichey) {
-            throw new Error('lukebrichey not found');
+        if (!profile) {
+            throw new Error('profile not found');
         };
 
         // Clear interestedPosts
@@ -24,7 +25,7 @@ async function main() {
             where: {
             interestedProfiles: {
                 some: {
-                id: lukebrichey.id,
+                id: profile.id,
                 },
             },
             },
@@ -36,7 +37,7 @@ async function main() {
                 data: {
                     interestedProfiles: {
                         disconnect: {
-                            id: lukebrichey.id,
+                            id: profile.id,
                         },
                     },
                 },
@@ -44,6 +45,7 @@ async function main() {
         };
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars 
     const populateComments = async () => {
         // Find some profiles
         const profiles = await prisma.profile.findMany({
@@ -78,6 +80,8 @@ async function main() {
 
         console.log('Comments populated.');
     };
+
+    await clearInterestedPosts();
 
     console.log('Seeding finished.');
 }

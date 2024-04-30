@@ -20,6 +20,11 @@ export default function Feed({ posts, profileId }: FeedProps ) {
           profileId={profileId}
         />
       ))}
+      
+      <div className="flex flex-col justify-center my-10">
+        <h4 className="text-xl mx-auto font-semibold">You&apos;re all caught up!</h4>
+        <h2 className="text-lg mx-auto font-semibold">There are no more posts to see.</h2>
+      </div>
     </div>
   );
 }

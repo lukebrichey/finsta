@@ -19,13 +19,13 @@ export default function Post({ createdBy, imageUrl, comments, id, caption, profi
             <div className="w-full flex flex-row justify-center border border-gray-500 rounded-lg relative overflow-hidden h-80">
                 <Image src={imageUrl} fill alt="Post image" className="object-cover border-none rounded-lg" />
             </div>
-            <div className="pt-2">
-                <strong className="font-bold">{user.username}</strong> {caption}
-            </div>
             <div className="flex flex-row items-center w-full pt-4 ml-2 space-x-3">
                 <Interest postId={id} profileId={profileId} />
                 <ChatBubbleOvalLeftIcon className="h-6 w-6 hover:cursor-pointer" />
                 <PaperAirplaneIcon className="h-6 w-6 hover:cursor-pointer" />
+            </div>
+            <div className="ml-2 pt-2">
+                <strong className="font-bold">{user.username}</strong> {caption}
             </div>
             <div className="p-4">
                 {comments.map((comment, index) => (
